@@ -175,7 +175,7 @@ public class CameraView: UIView {
     private func createPreview() {
         
         preview = AVCaptureVideoPreviewLayer(session: session)
-        preview.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        preview.videoGravity = CameraGlobals.shared.videoGravity
         preview.frame = bounds
 
         layer.addSublayer(preview)
