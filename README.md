@@ -1,3 +1,9 @@
+Added variable `videoGravity` to `CameraGlobals`
+
+```videoGravity
+public var videoGravity: AVLayerVideoGravity = .resizeAspect
+```
+
 # ALCameraViewController
 A camera view controller with custom image picker and image cropping.
 
