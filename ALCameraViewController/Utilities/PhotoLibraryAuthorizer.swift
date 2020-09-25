@@ -22,7 +22,7 @@ class PhotoLibraryAuthorizer {
         handleAuthorization(status: PHPhotoLibrary.authorizationStatus())
     }
     
-    func onDeniedOrRestricted(completion: PhotoLibraryAuthorizerCompletion) {
+    private func onDeniedOrRestrictedOrLimited(completion: PhotoLibraryAuthorizerCompletion) {
         let error = errorWithKey("error.access-denied", domain: errorDomain)
         completion(error)
     }
@@ -37,9 +37,9 @@ class PhotoLibraryAuthorizer {
                 self.completion(nil)
             }
             break
-        case .denied, .restricted:
+        case .denied, .restricted, .limited:
             DispatchQueue.main.async {
-                self.onDeniedOrRestricted(completion: self.completion)
+                self.onDeniedOrRestrictedOrLimited(completion: self.completion)
             }
             break
         }
